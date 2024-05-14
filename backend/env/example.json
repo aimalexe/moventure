@@ -1,0 +1,20 @@
+{
+    "APP_ENV": "development",
+    "PORT": 3030,
+    "JWT_PRIVATE_KEY": "some-secrete-key",
+    "BASE_URL": "http://localhost:3030",
+
+    "DB": {
+        "username": "your-db-username",
+        "password": "WbdM7OQtSuKvFlfL",
+        "cluster": "project-cluster",
+        "clusterId": "abcde12",
+        "collection": "data_dev"
+    },
+
+    "MAILER": {
+        "email": "your_email@domain.com",
+        "password": "password-issued-by-gmail || your-email-password"
+    }
+}
+
