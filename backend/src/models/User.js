@@ -6,14 +6,34 @@ import config from 'config';
 import { toJSON } from './plugins/to-json.js';
 
 const userSchema = new mongoose.Schema({
-    name: {
+    firstName: {
         type: String,
-        minLength: 3,
+        minLength: 1,
         maxLength: 50,
         trim: true,
         required: true,
     },
-
+    lastName: {
+        type: String,
+        minLength: 1,
+        maxLength: 50,
+        trim: true,
+    },
+    dateOfBirth: {
+        type: Date,
+    },
+    phoneNumber: {
+        type: String,
+        minLength: 7,
+        maxLength: 15,
+        trim: true,
+    },
+    address: {
+        type: String,
+        minLength: 5,
+        maxLength: 255,
+        trim: true,
+    },
     email: {
         type: String,
         required: true,
@@ -22,7 +42,6 @@ const userSchema = new mongoose.Schema({
         trim: true,
         unique: true,
     },
-
     password: {
         type: String,
         minLength: 8,
@@ -31,7 +50,7 @@ const userSchema = new mongoose.Schema({
         trim: true,
         private: true,
     },
-}, { timestamps: true },
+}, { timestamps: true }
 );
 
 userSchema.plugin(toJSON);
@@ -43,12 +62,10 @@ userSchema.methods.generateAuthToken = function () {
 userSchema.pre('save', async function (next) {
     if (!this.isModified('password'))
         return next();
-    console.log(this.password);
     const salt = await bcrypt.genSalt(10);
     this.password = await bcrypt.hash(this.password, salt);
-    console.log(this.password);
     next();
 });
 
-const User = new mongoose.model('user', userSchema);
+const User = new mongoose.model('User', userSchema);
 export { User };

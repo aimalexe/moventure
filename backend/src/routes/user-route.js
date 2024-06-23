@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { isAuthenticated, asyncHandler, validateAndSanitize } from '../middlewares/index.js';
+import { isAuthenticated, asyncHandler, validateAndSanitize, isValidId } from '../middlewares/index.js';
 import { userController } from '../controllers/index.js';
 import { editUser, deleteUser } from '../validators/index.js';
 
@@ -24,18 +24,18 @@ router.get(
 
 router.get(
     '/:userId',
-    [isAuthenticated],
+    [isValidId, isAuthenticated],
     asyncHandler(getUserById),
 );
 router.put(
     '/:userId',
-    [isAuthenticated, validateAndSanitize(editUser)],
+    [isValidId, isAuthenticated, validateAndSanitize(editUser)],
     asyncHandler(editUserProfile),
 );
 
 router.delete(
     '/:userId',
-    [isAuthenticated, validateAndSanitize(deleteUser)],
+    [isValidId, isAuthenticated, validateAndSanitize(deleteUser)],
     asyncHandler(deleteUserProfile),
 );
 

@@ -1,17 +1,15 @@
 import Joi from 'joi';
 
-import { name, email, password } from './reuseable-validators.js';
+import { email, password, lastName, dateOfBirth, address } from './reuseable-validators.js';
 
 export function editUser(data) {
     const validDetails = Joi.object({
-        name,
-        email: Joi
-            .string()
-            .email()
-            .min(5)
-            .max(255)
-            .trim()
-            .optional(),
+        firstName: Joi.string().min(1).max(50).optional(),
+        lastName,
+        dateOfBirth,
+        phoneNumber: Joi.string().min(7).max(15).optional(),
+        address,
+        email: Joi.string().email().min(5).max(255).trim().optional(),
     });
 
     return validDetails.validate(data);

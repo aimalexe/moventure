@@ -1,6 +1,5 @@
 import Joi from 'joi';
-import { email, password, name } from './reuseable-validators.js';
-
+import {firstName, lastName, address, dateOfBirth, email, password, phoneNumber} from './reuseable-validators.js';
 
 export function validateLogin(data) {
     const validLogin = Joi.object({
@@ -12,9 +11,13 @@ export function validateLogin(data) {
 
 export function validateSignup(data) {
     const validSignup = Joi.object({
-        name,
+        firstName,
+        lastName,
+        dateOfBirth,
+        phoneNumber,
+        address,
         email,
         password,
     });
     return validSignup.validate(data);
-}
+};
