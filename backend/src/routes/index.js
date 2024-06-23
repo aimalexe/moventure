@@ -3,6 +3,7 @@ import user from './user-route.js';
 import auth from './auth-route.js';
 import resetPassword from './reset-password-route.js';
 import destination from './destination-route.js';
+import review from './review-route.js';
 import { sendResponse } from '../utilities/format-response.js';
 
 export default (app) => {
@@ -11,6 +12,7 @@ export default (app) => {
     app.use('/api/auth', auth);
     app.use('/api/reset-password', resetPassword);
     app.use('/api/destination', destination);
+    app.use('/api/review', review);
 
     // last in route handlers for handling 404 error. add other routes above it
     app.use('*', (request, response) => {

@@ -2,8 +2,8 @@ import mongoose from 'mongoose';
 import { sendResponse, AppError } from '../utilities/index.js';
 
 export const isValidId = (request, response, next) => {
-    const { userId, destinationId, id } = request.params;
-    const idToValidate = userId || destinationId || id;
+    const { userId, destinationId, reviewId, id } = request.params;
+    const idToValidate = userId || destinationId || reviewId || id;
 
     if (!mongoose.Types.ObjectId.isValid(idToValidate)) {
         const error = new AppError(`The ID: ${idToValidate} is incorrect.`, 400, false);
