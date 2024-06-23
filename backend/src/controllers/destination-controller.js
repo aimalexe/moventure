@@ -3,7 +3,7 @@ import { sendResponse } from '../utilities/index.js';
 
 export const getAllDestinations = async (request, response) => {
     const destinations = await Destination.find();
-    if (!destinations) return sendResponse(response, 404, `Destination isn't found.`);
+    if (!destinations) return sendResponse(response, 404, `Destinations not found.`);
     sendResponse(response, 200, destinations);
 };
 
