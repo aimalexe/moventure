@@ -30,14 +30,28 @@ export const editUserProfile = async (request, response) => {
     const user = await User.findById(request.params.userId).select('-password');
     if (!user) return sendResponse(response, 404, `User with id: ${request.params.userId} isn't found.`);
 
-    if (request.validatedData?.email && request.validatedData?.email !== user.email) {
-        const isExistingUserEmail = await User.findOne({ email: request.validatedData?.email });
-        if (isExistingUserEmail) return sendResponse(response, 409, 'The updated email is already registered with another user.');
+    const { validatedData } = request;
 
-        user.set({ email: request.validatedData.email });
+    if (validatedData?.email && validatedData?.email !== user.email) {
+        const isExistingUserEmail = await User.findOne({ email: validatedData?.email });
+        if (isExistingUserEmail) return sendResponse(response, 409, 'The updated email is already registered with another user.');
+        user.email = validatedData.email;
     }
 
-    user.set({ name: request.validatedData.name });
+    const updatableFields = [
+        'firstName',
+        'lastName',
+        'dateOfBirth',
+        'phoneNumber',
+        'address',
+    ];
+
+    for (const field of updatableFields) {
+        if (validatedData[field] !== undefined) {
+            user[field] = validatedData[field];
+        }
+    }
+
     await user.save();
 
     sendResponse(response, 200, user.toJSON());
@@ -48,12 +62,12 @@ export const deleteUserProfile = async (request, response) => {
     if (!user) return sendResponse(response, 404, `User with id: ${request.params.userId} isn't found.`);
 
     if (request.validatedData.email !== user.email)
-        return sendResponse(response, 400, 'Invalid Password or Email.');
+        return sendResponse(response, 400, 'Invalid Email.');
 
     const isValidPassword = await bcrypt.compare(request.validatedData.password, user.password);
-    if (!isValidPassword) return sendResponse(response, 400, 'Invalid Password or Email.');
+    if (!isValidPassword) return sendResponse(response, 400, 'Invalid Password.');
 
     await user.deleteOne();
 
-    sendResponse(response, 200, 'user deleted successfully.');
+    sendResponse(response, 200, 'User deleted successfully.');
 };
