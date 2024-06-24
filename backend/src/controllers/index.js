@@ -4,3 +4,4 @@ export * as resetPassword from './reset-password-controller.js';
 export * as destinationController from './destination-controller.js';
 export * as bookingController from './booking-controller.js';
 export * as reviewController from './review-controller.js';
+export * as accommodationController from './accommodation-controller.js';
