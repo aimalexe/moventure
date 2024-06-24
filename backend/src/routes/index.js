@@ -13,7 +13,7 @@ export default (app) => {
     app.use('/api/auth', auth);
     app.use('/api/reset-password', resetPassword);
     app.use('/api/destination', destination);
-    app.use('/api/booking', booking)
+    app.use('/api/booking', booking);
     app.use('/api/review', review);
 
     // last in route handlers for handling 404 error. add other routes above it

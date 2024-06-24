@@ -1,4 +1,4 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 // Reusable validators
 export const email = Joi.string().email().min(5).max(255).required();

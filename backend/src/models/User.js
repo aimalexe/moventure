@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema({
         trim: true,
         private: true,
     },
-}, { timestamps: true }
+}, { timestamps: true },
 );
 
 userSchema.plugin(toJSON);

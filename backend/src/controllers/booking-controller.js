@@ -3,8 +3,8 @@ import { sendResponse } from '../utilities/index.js';
 
 export const getAllBookings = async (request, response) => {
     const bookings = await Booking.find();
-    if (!bookings) return sendResponse(response, 404, `Bookings not found.`);
-    
+    if (!bookings) return sendResponse(response, 404, 'Bookings not found.');
+
     sendResponse(response, 200, bookings);
 };
 
@@ -27,7 +27,7 @@ export const updateBooking = async (request, response) => {
     const booking = await Booking.findByIdAndUpdate(
         request.params.bookingId,
         request.validatedData,
-        { new: true, runValidators: true }
+        { new: true, runValidators: true },
     );
 
     if (!booking) return sendResponse(response, 404, `Booking with id: ${request.params.bookingId} not found.`);

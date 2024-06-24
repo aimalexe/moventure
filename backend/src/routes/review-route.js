@@ -7,31 +7,31 @@ const router = express.Router();
 
 router.get(
     '/',
-    asyncHandler(reviewController.getAllReviews)
+    asyncHandler(reviewController.getAllReviews),
 );
 
 router.post(
     '/',
     [isAuthenticated, validateAndSanitize(validateCreateReview)],
-    asyncHandler(reviewController.createReview)
+    asyncHandler(reviewController.createReview),
 );
 
 router.get(
     '/:reviewId',
     isValidId,
-    asyncHandler(reviewController.getReview)
+    asyncHandler(reviewController.getReview),
 );
 
 router.put(
     '/:reviewId',
     [isAuthenticated, isValidId, validateAndSanitize(validateUpdateReview)],
-    asyncHandler(reviewController.updateReview)
+    asyncHandler(reviewController.updateReview),
 );
 
 router.delete(
     '/:reviewId',
     [isValidId, isAuthenticated],
-    asyncHandler(reviewController.deleteReview)
+    asyncHandler(reviewController.deleteReview),
 );
 
 export default router;

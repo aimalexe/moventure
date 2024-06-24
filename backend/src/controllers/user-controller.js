@@ -43,14 +43,14 @@ export const editUserProfile = async (request, response) => {
         'lastName',
         'dateOfBirth',
         'phoneNumber',
-        'address'
+        'address',
     ];
 
-    updatableFields.forEach(field => {
+    for (const field of updatableFields) {
         if (validatedData[field] !== undefined) {
             user[field] = validatedData[field];
         }
-    });
+    }
 
     await user.save();
 

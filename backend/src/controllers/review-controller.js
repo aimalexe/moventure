@@ -3,7 +3,7 @@ import { sendResponse } from '../utilities/index.js';
 
 export const getAllReviews = async (request, response) => {
     const reviews = await Review.find();
-    if (!reviews) return sendResponse(response, 404, `Reviews not found.`);
+    if (!reviews) return sendResponse(response, 404, 'Reviews not found.');
 
     sendResponse(response, 200, reviews);
 };
@@ -27,7 +27,7 @@ export const updateReview = async (request, response) => {
     const review = await Review.findByIdAndUpdate(
         request.params.reviewId,
         request.validatedData,
-        { new: true, runValidators: true }
+        { new: true, runValidators: true },
     );
     if (!review) return sendResponse(response, 404, `Review with id: ${request.params.reviewId} not found.`);
     sendResponse(response, 200, review.toJSON());

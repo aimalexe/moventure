@@ -16,7 +16,7 @@ export function validateUpdateBooking(data) {
         bookingDate: Joi.date().optional(),
         totalCost: Joi.number().optional(),
         status: Joi.string().valid('pending', 'confirmed', 'canceled').optional(),
-        destinationId: Joi.string().optional()
+        destinationId: Joi.string().optional(),
     });
 
     return bookingValidator.validate(data);

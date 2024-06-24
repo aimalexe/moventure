@@ -7,31 +7,31 @@ const router = express.Router();
 
 router.get(
     '/',
-    asyncHandler(destinationController.getAllDestinations)
+    asyncHandler(destinationController.getAllDestinations),
 );
 
 router.post(
-    '/', 
-    [isAuthenticated, validateAndSanitize(validateCreateDestination)], 
-    asyncHandler(destinationController.createDestination)
+    '/',
+    [isAuthenticated, validateAndSanitize(validateCreateDestination)],
+    asyncHandler(destinationController.createDestination),
 );
 
 router.get(
-    '/:destinationId', 
+    '/:destinationId',
     isValidId,
-    asyncHandler(destinationController.getDestination)
+    asyncHandler(destinationController.getDestination),
 );
 
 router.put(
-    '/:destinationId', 
-    [isAuthenticated,isValidId, validateAndSanitize(validateUpdateDestination)], 
-    asyncHandler(destinationController.updateDestination)
+    '/:destinationId',
+    [isAuthenticated,isValidId, validateAndSanitize(validateUpdateDestination)],
+    asyncHandler(destinationController.updateDestination),
 );
 
 router.delete(
-    '/:destinationId', 
-    [isValidId, isAuthenticated], 
-    asyncHandler(destinationController.deleteDestination)
+    '/:destinationId',
+    [isValidId, isAuthenticated],
+    asyncHandler(destinationController.deleteDestination),
 );
 
 export default router;

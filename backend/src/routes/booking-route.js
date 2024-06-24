@@ -7,31 +7,31 @@ const router = express.Router();
 
 router.get(
     '/',
-    asyncHandler(bookingController.getAllBookings)
+    asyncHandler(bookingController.getAllBookings),
 );
 
 router.post(
-    '/', 
-    [isAuthenticated, validateAndSanitize(validateCreateBooking)], 
-    asyncHandler(bookingController.createBooking)
+    '/',
+    [isAuthenticated, validateAndSanitize(validateCreateBooking)],
+    asyncHandler(bookingController.createBooking),
 );
 
 router.get(
-    '/:bookingId', 
+    '/:bookingId',
     [isValidId, isAuthenticated],
-    asyncHandler(bookingController.getBooking)
+    asyncHandler(bookingController.getBooking),
 );
 
 router.put(
-    '/:bookingId', 
-    [isAuthenticated, isValidId, validateAndSanitize(validateUpdateBooking)], 
-    asyncHandler(bookingController.updateBooking)
+    '/:bookingId',
+    [isAuthenticated, isValidId, validateAndSanitize(validateUpdateBooking)],
+    asyncHandler(bookingController.updateBooking),
 );
 
 router.delete(
-    '/:bookingId', 
-    [isValidId, isAuthenticated], 
-    asyncHandler(bookingController.deleteBooking)
+    '/:bookingId',
+    [isValidId, isAuthenticated],
+    asyncHandler(bookingController.deleteBooking),
 );
 
 export default router;

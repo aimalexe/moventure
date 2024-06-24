@@ -9,7 +9,7 @@ export function validateCreateDestination(data) {
         country: Joi.string().min(2).max(255).required(),
         city: Joi.string().min(3).max(255).required(),
         description,
-        reviewID
+        reviewID,
     });
 
     return destinationValidator.validate(data);
@@ -21,7 +21,7 @@ export function validateUpdateDestination(data) {
         country: Joi.string().min(2).max(255).optional(),
         city: Joi.string().min(3).max(255).optional(),
         description,
-        reviewID
+        reviewID,
     });
 
     return destinationValidator.validate(data);
