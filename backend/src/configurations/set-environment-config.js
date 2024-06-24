@@ -28,8 +28,8 @@ export const setEnvironmentConfig = () => {
             if (!config.has('PORT'))
                 throw new AppError('CONFIG_ERROR: \'PORT\' is not defined.', '7002', false);
 
-            if (!config.has('APP_ENV'))
-                throw new AppError('CONFIG_ERROR: \'APP_ENV\' is not defined.', '7002', false);
+            // if (!config.has('APP_ENV'))
+                // throw new AppError('CONFIG_ERROR: \'APP_ENV\' is not defined.', '7002', false);
 
             if (!config.has('BASE_URL'))
                 throw new AppError('CONFIG_ERROR: \'BASE_URL\' is not defined.', '7002', false);

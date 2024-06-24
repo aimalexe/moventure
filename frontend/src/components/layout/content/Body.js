@@ -5,7 +5,6 @@ function Body() {
     return (
         <div>
             <SearchBox />
-            
         </div>
     );
 }
