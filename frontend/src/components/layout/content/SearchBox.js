@@ -2,10 +2,10 @@ import React from 'react';
 import styles from '../../../styles/Body.module.css'
 import girlPic from '../../../assets/images/Image.svg';
 function SearchBox() {
+   
     return (
-        <div className={styles.Container}>
+        <div className={styles.Container} id='blog'>
             <div>
-
             <h6 className={styles.h6}>Best Destinations around the world</h6>
             <h2 className={styles.h2} >Travel, enjoy
                 <span>and live a new</span>

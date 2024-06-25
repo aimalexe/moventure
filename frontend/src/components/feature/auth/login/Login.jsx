@@ -47,6 +47,7 @@ const Login = () => {
             // console.log(response.data.statusCode);
             const token = response.headers['x-auth-token'];
             localStorage.setItem('x-auth-token', token);
+            localStorage.setItem('userId', response.data.data.id);
           navigate('/');
         }
         ).catch((error) => {
@@ -58,6 +59,7 @@ const Login = () => {
                     showConfirmButton: true,
                     timer: 2000
                 })
+                console.log(error);
             } else {
                 MySwal.fire({
                     title: 'Error',
@@ -66,6 +68,7 @@ const Login = () => {
                     showConfirmButton: true,
                     timer: 2000
                 })
+                console.log(error);
             }
         });    
     
