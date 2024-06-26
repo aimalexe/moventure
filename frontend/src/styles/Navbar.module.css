@@ -2,7 +2,9 @@
 :root{
     --primary-color: #ffffff;
 }
-
+html {
+    scroll-behavior: smooth;
+  }
 .navbar {
     padding: 1rem;
     display: flex;
@@ -92,6 +94,18 @@
     background-color: var(--primary-color);
     width: 100%;
     text-align: center;
+}
+.profileLink {
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profileIcon {
+    width: 40px; /* Adjust the size as needed */
+    height: 40px; /* Adjust the size as needed */
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 @media (max-width: 768px) {

@@ -58,9 +58,10 @@ const Register = () => {
         })
         const token = response.headers['x-auth-token'];
         localStorage.setItem('x-auth-token', token);
+        localStorage.setItem('userId', response.data.data.id);
         navigate('/');
       }).catch((error) => {
-        if (error.response && error.response.data.error) {
+        if (error.response && error.response.data.error && error.response.data.error.message) {
             MySwal.fire({
                 title: 'Error',
                 text: error.response.data.error.message,
