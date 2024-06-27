@@ -6,6 +6,7 @@ import destination from './destination-route.js';
 import booking from './booking-route.js';
 import review from './review-route.js';
 import accommodation from './accommodation-route.js';
+import flights from './flights-route.js';
 import { sendResponse } from '../utilities/format-response.js';
 
 export default (app) => {
@@ -17,6 +18,7 @@ export default (app) => {
     app.use('/api/booking', booking);
     app.use('/api/review', review);
     app.use('/api/accommodation', accommodation);
+    app.use('/api/flights', flights);
 
     // last in route handlers for handling 404 error. add other routes above it
     app.use('*', (request, response) => {
