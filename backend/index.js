@@ -5,8 +5,6 @@ import { setEnvironmentConfig, logger, connect2DB } from './src/configurations/i
 import { useMiddlewares } from './src/middlewares/index.js';
 import routes from './src/routes/index.js';
 
-// Load environment variables
-
 const main = () => {
     setEnvironmentConfig(); // Validate environment configurations
 

@@ -2,9 +2,9 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import express from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 
 import { logRequestInfo } from './log-request-info-middleware.js';
-
 
 export function useMiddlewares(app) {
     const __dirname = dirname(fileURLToPath(import.meta.url)); // Get the directory name
@@ -17,4 +17,5 @@ export function useMiddlewares(app) {
     app.use(cors(corsOptions));
     app.use(logRequestInfo); // logs the HTTP method and URL of incoming requests to the server.
     app.use(express.static(join(__dirname, '../../public')));
+    app.use(helmet());
 };
