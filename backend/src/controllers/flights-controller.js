@@ -1,5 +1,4 @@
 import axios from 'axios';
-import config from 'config';
 import { sendResponse } from '../utilities/index.js';
 
 // Setup axios instance for Duffel API calls
@@ -10,7 +9,7 @@ const duffelApi = axios.create({
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Duffel-Version': 'v1',
-        'Authorization': `Bearer ${config.get('DUFFEL_ACCESS_TOKEN')}` // Replace with actual Duffel API access token
+        'Authorization': `Bearer ${process.env.DUFFEL_ACCESS_TOKEN}`
     }
 });
 

@@ -1,12 +1,11 @@
 import express from 'express';
-import dotenv from 'dotenv';
+import './env/env.js';
 
 import { setEnvironmentConfig, logger, connect2DB } from './src/configurations/index.js';
 import { useMiddlewares } from './src/middlewares/index.js';
 import routes from './src/routes/index.js';
 
 // Load environment variables
-dotenv.config({path: `./env/.env.${process.env.NODE_ENV}`});
 
 const main = () => {
     setEnvironmentConfig(); // Validate environment configurations
