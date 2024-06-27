@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken';
-import config from 'config';
 import { AppError, sendResponse } from '../utilities/index.js';
 
 //? A middleware to check if user have token.
@@ -11,7 +10,7 @@ export const isAuthenticated = (request, response, next) => {
         return sendResponse(response, 401, error.message, error);
     };
     try {
-        const decoded = jwt.verify(token, config.get('JWT_PRIVATE_KEY'));
+        const decoded = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
         request.user = decoded;
         next();
     }
