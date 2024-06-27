@@ -6,11 +6,11 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --fix index.js src/**/*.js tests/**/*.js",
-    "start": "export NODE_ENV=production || set NODE_ENV=production && node index.js",
-    "dev": "export NODE_ENV=development || set NODE_ENV=development && nodemon index.js",
-    "test": "export NODE_ENV=test || set NODE_ENV=test && jest",
-    "test:unit": "export NODE_ENV=test || set NODE_ENV=test && node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/unit",
-    "test:integ": "export NODE_ENV=test || set NODE_ENV=test && node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/integration"
+    "start": "(export NODE_ENV=production || set NODE_ENV=production) && node index.js",
+    "dev": "(export NODE_ENV=development || set NODE_ENV=development) && nodemon index.js",
+    "test": "(export NODE_ENV=test || set NODE_ENV=test) && jest",
+    "test:unit": "(export NODE_ENV=test || set NODE_ENV=test) && node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/unit",
+    "test:integ": "(export NODE_ENV=test || set NODE_ENV=test) && node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/integration"
   },
   "keywords": [
     "javascript",
