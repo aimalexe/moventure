@@ -6,3 +6,4 @@ export * from './destination-validators.js';
 export * from './booking-validator.js';
 export * from './review-validators.js';
 export * from './accommodation-validators.js';
+export * from './flights-validator.js';
