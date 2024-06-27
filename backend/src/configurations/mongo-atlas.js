@@ -1,14 +1,13 @@
 import mongoose from 'mongoose';
-import config from 'config';
-
-import {logger} from './logger.js';
+import { logger } from './logger.js';
 
 export const connect2DB = () => {
-    const username = config.get('DB.username');
-    const password = config.get('DB.password');
-    const cluster = config.get('DB.cluster');
-    const clusterId = config.get('DB.clusterId');
-    const collection = config.get('DB.collection');
+    const username = process.env.DB_USERNAME;
+    const password = process.env.DB_PASSWORD;
+    const cluster = process.env.DB_CLUSTER;
+    const clusterId = process.env.DB_CLUSTERID;
+    const collection = process.env.DB_COLLECTION;
+
 
     const connectionString = `mongodb+srv://${username}:${password}@${cluster}.${clusterId}.mongodb.net/${collection}?retryWrites=true&w=majority`;
 

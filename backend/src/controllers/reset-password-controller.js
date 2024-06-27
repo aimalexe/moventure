@@ -1,5 +1,4 @@
 import crypto from 'node:crypto';
-import config from 'config';
 
 import { User, TemporaryToken } from '../models/index.js';
 import { transporter } from '../configurations/index.js';
@@ -31,11 +30,11 @@ export const sendLink = async (request, response) => {
         await token.save();
     }
 
-    const link = `${config.get('BASE_URL')}/api/reset-password/${user._id}/${token.token}`;
+    const link = `${process.env.BASE_URL}/api/reset-password/${user._id}/${token.token}`;
 
     // Send password reset link via email
     await transporter.sendMail({
-        from: config.get('MAILER.email'),
+        from: process.env.MAILER_EMAIL,
         to: user.email,
         subject: 'Moventure: Password Reset Link',
         text: link,

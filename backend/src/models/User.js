@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import config from 'config';
 
 import { toJSON } from './plugins/to-json.js';
 
@@ -56,7 +55,7 @@ const userSchema = new mongoose.Schema({
 userSchema.plugin(toJSON);
 
 userSchema.methods.generateAuthToken = function () {
-    return jwt.sign({ _id: this._id }, config.get('JWT_PRIVATE_KEY'));
+    return jwt.sign({ _id: this._id }, process.env.JWT_PRIVATE_KEY);
 };
 
 userSchema.pre('save', async function (next) {

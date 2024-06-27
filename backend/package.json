@@ -6,12 +6,11 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint --fix index.js src/**/*.js tests/**/*.js",
-    "start": "(export NODE_CONFIG_DIR=./env || set NODE_CONFIG_DIR=./env) && (export NODE_ENV=production || set NODE_ENV=production) && node index.js",
-    "dev": "(export NODE_CONFIG_DIR=./env || set NODE_CONFIG_DIR=./env) && (export NODE_ENV=development || set NODE_ENV=development) && nodemon index.js",
-    "test": "(export NODE_CONFIG_DIR=./env || set NODE_CONFIG_DIR=./env) && (export NODE_ENV=test || set NODE_ENV=test) && jest",
-    "test:unit": "(export NODE_CONFIG_DIR=./env || set NODE_CONFIG_DIR=./env) && (export NODE_ENV=test || set NODE_ENV=test) && node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/unit",
-    "test:integ": "(export NODE_CONFIG_DIR=./env || set NODE_CONFIG_DIR=./env) && (export NODE_ENV=test || set NODE_ENV=test) && node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/integration",
-    "prod": "(export NODE_CONFIG_DIR=./env || set NODE_CONFIG_DIR=./env) && (export NODE_ENV=production || set NODE_ENV=production) && node index.js"
+    "start": "export NODE_ENV=production || set NODE_ENV=production && node index.js",
+    "dev": "export NODE_ENV=development || set NODE_ENV=development && nodemon index.js",
+    "test": "export NODE_ENV=test || set NODE_ENV=test && jest",
+    "test:unit": "export NODE_ENV=test || set NODE_ENV=test && node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/unit",
+    "test:integ": "export NODE_ENV=test || set NODE_ENV=test && node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/integration"
   },
   "keywords": [
     "javascript",
@@ -35,8 +34,8 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "config": "^3.3.9",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
     "express": "^4.18.2",
     "joi": "^17.9.2",
     "jsonwebtoken": "^9.0.1",

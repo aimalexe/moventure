@@ -1,6 +1,4 @@
 // A utility function to standardize the format of API responses, making it easier to send consistent responses.
-import config from 'config';
-
 import httpStatusCodes from '../../public/data/http-status-codes.js';
 
 export const sendResponse = (response, statusCode, data, error) => {
@@ -17,7 +15,7 @@ export const sendResponse = (response, statusCode, data, error) => {
                     status: error.statusName,
                     name: error.name,
                     isOperational: error.isOperational,
-                    ...(config.get('APP_ENV') === 'production' ?
+                    ...(process.env.NODE_ENV === 'production' ?
                         {} : { details: error.stack }),
                 },
             }) :
