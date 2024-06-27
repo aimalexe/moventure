@@ -30,6 +30,10 @@ const destinationSchema = new mongoose.Schema({
         ref: 'Review',
         optional: true,
     },
+    imageUrl: {
+        type: String,
+        optional: true,
+    },
 }, { timestamps: true });
 
 destinationSchema.plugin(toJSON);
